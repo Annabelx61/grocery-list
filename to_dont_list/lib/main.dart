@@ -20,7 +20,7 @@ class _ToDoListState extends State<ToDoList> {
 
 
 
-  void _handleListChanged(Grocery grocery, bool completed) {
+  void _handleListChanged(Grocery grocery, bool completed, double price) {
     setState(() {
       // When a user changes what's in the list, you need
       // to change _groceryset inside a setState call to
@@ -33,6 +33,8 @@ class _ToDoListState extends State<ToDoList> {
         print("Completing");
         _groceryset.add(grocery);
         grocerys.add(grocery);
+        prices.add(price);
+
       } else {
         print("Making Undone");
         _groceryset.remove(grocery);
@@ -74,6 +76,7 @@ class _ToDoListState extends State<ToDoList> {
               completed: _groceryset.contains(grocery),
               onListChanged: _handleListChanged,
               onDeleteGrocery: _handleDeleteGrocery,
+              price: grocery.price,
             );
           }).toList(),
         ),
