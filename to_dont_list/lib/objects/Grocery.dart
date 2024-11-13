@@ -1,11 +1,14 @@
 class Grocery {
-  Grocery ({required this.name, required this.price});
+  Grocery ({required this.name, required this.price, required this.count});
 
   final String name;
   final double price;
-  int count = 1;
+  int count;
 
   int increase() {
-    return count++;
+    count++;
+    print(count);
+    return count;
+    
   }
 }

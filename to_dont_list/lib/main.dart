@@ -22,23 +22,27 @@ class _ToDoListState extends State<ToDoList> {
 
   void _handleListChanged(Grocery grocery, bool completed, double price) {
     setState(() {
+      grocery.increase();
       // When a user changes what's in the list, you need
       // to change _groceryset inside a setState call to
       // trigger a rebuild.
       // The framework then calls build, below,
       // which updates the visual appearance of the app.
 
-      grocerys.remove(grocery);
-      if (!completed) {
-        print("Completing");
-        _groceryset.add(grocery);
-        grocerys.add(grocery);
-        prices.add(price);
+      //grocerys.remove(grocery);
+      //if (!completed) {
+        //print("Completing");
+        //_groceryset.add(grocery);
+        //grocerys.add(grocery);
+      //  print(grocerys);
+      prices.add(price);
+       // print(completed.toString());
 
-      } else {
+      /*} else {
+        print(completed.toString());
         print("Making Undone");
         _groceryset.remove(grocery);
-      }
+      }*/
     });
   }
 
@@ -46,14 +50,14 @@ class _ToDoListState extends State<ToDoList> {
     setState(() {
       print("Deleting Grocery");
       grocerys.remove(grocery);
-      prices.remove(grocery.price);
+      prices.remove(grocery.price*grocery.count);
     });
   }
 
   void _handleNewGrocery(double price, String groceryText, TextEditingController textController, TextEditingController textController2) {
     setState(() {
       print("Adding new Grocery");
-      Grocery grocery = Grocery(name: groceryText, price: price);
+      Grocery grocery = Grocery(name: groceryText, price: price, count: 1);
       grocery.count;
       grocerys.insert(0, grocery);
       prices.add(price);

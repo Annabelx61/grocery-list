@@ -72,6 +72,7 @@ class _ToDoDialogState extends State<ToDoDialog> {
                   ? () {
                     String valueText = _inputController.text;
                     double priceText = double.parse(_inputController2.text);
+                    int count = 1;
                     prices.add(priceText);
                     // https://stackoverflow.com/questions/56207275/how-can-i-get-int-data-from-texteditingcontroller-in-flutter
                     // To change the string pulled from string to an int

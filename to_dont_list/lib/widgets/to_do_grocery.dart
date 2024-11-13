@@ -14,7 +14,7 @@ class ToDoListGrocery extends StatelessWidget {
       required this.price})
       : super(key: ObjectKey(grocery));
 
-  final Grocery grocery;
+  Grocery grocery;
   final bool completed;
   final ToDoListChangedCallback onListChanged;
   final ToDoListRemovedCallback onDeleteGrocery;
@@ -24,16 +24,18 @@ class ToDoListGrocery extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       onTap: () {
+        print("tap");
         onListChanged(grocery, completed, price);
         
       },
       onLongPress: completed
           ? () {
+            print("long");
               onDeleteGrocery(grocery);
             }
           : null,
       leading: CircleAvatar(
-        child: Text(grocery.increase().toString()),
+        child: Text(grocery.count.toString()),
       ),
       title: Text(
         grocery.name,

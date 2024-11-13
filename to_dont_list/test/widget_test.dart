@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:to_dont_list/main.dart';
 
@@ -16,8 +17,9 @@ void main() {
         home: Scaffold(
             body: ToDoListGrocery(
                 grocery: Grocery(name: "test", price: 10.99),
+                price: 10.99,
                 completed: true,
-                onListChanged: (Grocery grocery, bool completed) {},
+                onListChanged: (Grocery grocery, bool completed, double price) {},
                 onDeleteGrocery: (Grocery grocery) {}))));
     final textFinder = find.text('test');
     expect(textFinder, findsOneWidget);
